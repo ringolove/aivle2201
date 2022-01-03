@@ -10,5 +10,5 @@ window.onload = function() {
         circle.style.marginLeft = "50px";
         circle.style.transition = "4s";
         circle.style.transform = "rotate(360deg)";
-    },4000);
+    },5000);
 }
