@@ -11,7 +11,7 @@ public class Exam3 {
 		Random random = new Random();
 		random.setSeed(System.currentTimeMillis());
 		
-		ans = random.nextInt(100);
+		ans = random.nextInt(100)+1;
 		
 		for (;;) {
 			System.out.print("숫자 입력(1부터 100까지): ");
@@ -25,6 +25,7 @@ public class Exam3 {
 				i++;
 			} else {
 				System.out.println("정답입니다!");
+				input.close();
 				break;
 			}
 		}
