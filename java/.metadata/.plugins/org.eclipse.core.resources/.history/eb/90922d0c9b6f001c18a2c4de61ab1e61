@@ -1,0 +1,11 @@
+package chap03;
+
+import chap05.TV;
+
+public class Test2{
+	public static void main(String[] args) {
+		TV tv = new TV();
+		System.out.println(tv.powerOn+" "+tv.volume);
+
+		}
+}

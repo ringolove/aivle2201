@@ -1,0 +1,10 @@
+package chap05;
+
+import java.util.Random;
+public class Lotto {
+	public static void main(String[] args) {
+	Random random = new Random();
+	random.setSeed(System.currentTimeMillis());
+	System.out.println(random.nextInt(1));
+	}
+}

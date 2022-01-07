@@ -1,0 +1,12 @@
+package chap05;
+
+public class ConstrExample3 {
+
+	public static void main(String[] args) {
+		SubscriberInfo obj;
+		obj = new SubscriberInfo(); // 파라미터 없이 객체를 생성합니다.
+		printSubscriberInfo(obj);
+
+	}
+
+}

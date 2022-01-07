@@ -1,0 +1,19 @@
+package chap03;
+
+	class Electronics{
+		boolean powerOn;
+	}
+	
+	class TV extends Electronics{
+		int volume;
+		public int getVolume() {return volume;}
+	}
+	
+public class Test2{	
+	public static void main(String[] args) {
+		TV tv = new TV();
+		System.out.println(tv.powerOn+" "+tv.volume);
+
+	}
+}
+

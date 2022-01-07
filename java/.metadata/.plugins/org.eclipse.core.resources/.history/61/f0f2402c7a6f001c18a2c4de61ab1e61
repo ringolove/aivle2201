@@ -1,0 +1,10 @@
+package chap05.main;
+
+public class PackageExample1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

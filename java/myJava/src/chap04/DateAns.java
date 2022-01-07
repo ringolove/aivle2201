@@ -5,12 +5,16 @@ public class DateAns {
 	int total = (year-1)*365+(year-1)/4-(year-1)/100+(year-1)/400;
 	
 	boolean isLeapYear() {
+		return this.isLeapYear(year);
+	}
+	
+	boolean isLeapYear(int year) {
 		boolean result = false;
 		if ((this.year%4 == 0) && (this.year%100!=0) || (this.year%400==0)) {
 			result = true;
 		}
 		return result;
-		}
+	}
 	
 	int getMonthLastDay(int month) {
 		int lday[] = {-1, 31,28,31,30,31,30,31,31,30,31,30,31};
@@ -27,7 +31,7 @@ public class DateAns {
 		String[] weekdays = {"일", "월", "화", "수", "목", "금", "토"};
 		
 		for(int i=1;i<this.year;i++) {
-			if(year%4 == 0 && year%100!=0 || year%400==0){
+			if(this.isLeapYear(i)){
 				total_days += 366;
 			} else {
 				total_days += 365;
