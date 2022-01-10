@@ -1,0 +1,8 @@
+print(list(range(0,21)))
+print(list(range(1,22)))
+print(list(range(5,101,5)))
+print(list(range(3,60,4)))
+print(list(range(200,9,-10)))
+print(list(range(160,9,-30)))
+print(list(range(-2,-11,-1)))
+print(list(range(5,-15,-3)))
