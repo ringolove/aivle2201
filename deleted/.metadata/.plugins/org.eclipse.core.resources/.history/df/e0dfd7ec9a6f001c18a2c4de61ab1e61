@@ -1,6 +1,0 @@
-package chap05;
-
-public class TV extends Electronics{
-	int volume;
-	public int getVolume() {return volume;}
-}
