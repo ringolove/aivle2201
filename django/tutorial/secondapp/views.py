@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Course
+from .models import Course, Armyshop
 
 # Create your views here.
 def main(request):
@@ -15,8 +15,19 @@ def insert(request):
     return HttpResponse('데이터 입력 완료')
 
 def show(request):
-    course = Course.objects.all()
-    result = ''
-    for i in course:
-        result += '%s %s<br>' % (i.name, i.cnt)
-    return HttpResponse(result)
+    c = Course.objects.all()
+    # result = ''
+    # for i in course:
+    #     result += '%s %s<br>' % (i.name, i.cnt)
+    # return HttpResponse(result)
+    return render(
+        request, 'secondapp/show.html',
+        {'data': c}
+    )
+    
+def army_shop(request):
+    a = Armyshop.objects.all()
+    return render(
+        request, 'secondapp/army_shop.html',
+        {'data': a}
+    )

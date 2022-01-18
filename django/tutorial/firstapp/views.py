@@ -30,7 +30,11 @@ def insert(request):
 
 def show(request):
     curriculum = Curriculum.objects.all()
-    result = ''
-    for c in curriculum:
-        result += c.name + '<br>'
-    return HttpResponse(result)
+    # result = ''
+    # for c in curriculum:
+    #     result += c.name + '<br>'
+    # return HttpResponse(result)
+    
+    #               필수       필수   변경 가능   필수 아님
+    return render(
+        request, 'firstapp/show.html', {'score':100, 'data': curriculum})
