@@ -26,8 +26,27 @@ def show(request):
     )
     
 def army_shop(request):
-    a = Armyshop.objects.all()
+    # prd = request.GET.get('prd', '') # side effect
+    prd = request.GET.get('prd')
+    # a = Armyshop.objects.all()
+    
+    try:
+        shop = Armyshop.objects.filter(name__contains=prd)
+    except:
+        shop = Armyshop.objects.all()
+    
     return render(
         request, 'secondapp/army_shop.html',
-        {'data': a}
+        {'data': shop}
     )
+    
+def army_shop2(request, year, month):
+    shop = Armyshop.objects.filter(year=year, month=month)
+    
+    # result = ''
+    # for i in shop:
+    #     result += '%s %s %s<br>' % (i.year, i.month, i.name)
+    
+    result = ['%s %s %s<br>' % (i.year, i.month, i.name) for i in shop]
+    
+    return HttpResponse(''.join(result))
