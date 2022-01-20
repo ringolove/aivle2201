@@ -24,10 +24,11 @@ urlpatterns = [
     path('index2/', views.index2),
     path('first/', include('firstapp.urls')),
     path('second/', include('secondapp.urls')),
-    path('home/', config_views.home),
     path('third/', include('thirdapp.urls')),
+    path('home/', config_views.home),
     path('text/<str:char>/',config_views.text),
     path('<int:year>/<int:month>/',config_views.date),
     path('serach/', config_views.search),
-    path('info/', config_views.info)
+    path('info/', config_views.info),
+    path('image/', config_views.download),
 ]

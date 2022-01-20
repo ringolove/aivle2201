@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.forms.models import model_to_dict
 from .models import Course, Armyshop
 
 # Create your views here.
@@ -50,3 +52,19 @@ def army_shop2(request, year, month):
     result = ['%s %s %s<br>' % (i.year, i.month, i.name) for i in shop]
     
     return HttpResponse(''.join(result))
+
+@csrf_exempt
+def ajaxGet(request):
+    # QuerySet[]
+    c = Course.objects.all()
+    
+    data = []
+    # model_to_dict - 조회된 데이터를 dict 형태로
+    for a in c:
+        d = model_to_dict(a)
+        data.append(d)
+        
+    return JsonResponse(data, safe=False)
+
+def ajaxExam(request):
+    return render(request, 'secondapp/ajax_exam.html' )

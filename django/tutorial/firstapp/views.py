@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Curriculum
+import json
 
 # Create your views here.
 def index1(request):
@@ -38,3 +40,29 @@ def show(request):
     #               필수       필수   변경 가능   필수 아님
     return render(
         request, 'firstapp/show.html', {'score':100, 'data': curriculum})
+    
+def req_get(request):
+    a = request.GET.get('a')
+    b = request.GET.get('b')
+    c = request.GET['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+
+@csrf_exempt
+def req_post(request):
+    if request.method == 'POST':
+        a = request.POST.get('a')
+        b = request.POST.get('b')
+        c = request.POST['c']
+        result = '%s %s %s' % (a, b, c)
+        return HttpResponse(result)
+    return render(request, 'firstapp/post.html')
+
+def req_ajax4(request):
+    return render(request, 'firstapp/ajax4.html')
+
+@csrf_exempt
+def req_json(request):
+    obj = request.body.decode("utf-8")
+    data = json.loads(obj)
+    return JsonResponse(data)
