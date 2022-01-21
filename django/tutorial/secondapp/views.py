@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
+
+from secondapp.forms import CourseForm
 from .models import Course, Armyshop
 
 # Create your views here.
@@ -67,4 +69,25 @@ def ajaxGet(request):
     return JsonResponse(data, safe=False)
 
 def ajaxExam(request):
-    return render(request, 'secondapp/ajax_exam.html' )
+    return render(request, 'secondapp/ajax_exam.html')
+
+def course_create(request):
+    if request.method == 'POST':
+        ## form 미 사용 시 작성 코드
+        # name = request.POST.get('name')
+        # cnt = request.POST.get('cnt')
+        # c = Course(name=name, cnt=cnt)
+        # c.save()
+        
+        # 1. 입력된 데이터를 한꺼번에 저장
+        # 2. 유효성 검사 결과가 저장
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            # 데이터 저장
+            course = form.save(commit=False)
+            course.save()
+            # 어딘가로 이동, 메시지 출력, ....
+            return redirect('firstapp:post')
+    else:
+        form = CourseForm()    
+    return render(request, 'secondapp/course_create.html', {'form': form})

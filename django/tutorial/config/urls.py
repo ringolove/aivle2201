@@ -31,4 +31,5 @@ urlpatterns = [
     path('serach/', config_views.search),
     path('info/', config_views.info),
     path('image/', config_views.download),
+    path('member/', include('member.urls')),
 ]

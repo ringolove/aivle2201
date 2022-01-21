@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'member',
     'firstapp',
     'secondapp',
     'thirdapp',
@@ -57,8 +58,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'], # templates 폴더 위치 지정
+        'APP_DIRS': True, # App 하위의 templates 폴더 사용 (기본값)
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -158,3 +159,6 @@ STSTICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/member/login/'
+LOGOUT_REDIRECT_URL = '/member/login/'
